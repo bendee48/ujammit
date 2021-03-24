@@ -1,2 +1,8 @@
 <h1>Homepage</h1>
 <%= params.inspect %>
+<br />
+<%= "Refresh: #{Rails.cache.exist?(:refresh_token)}" %>
+<br />
+<%= "Access: #{Rails.cache.exist?(:access_token)}" %>
+<br />
+<%= @parsed_data %>
