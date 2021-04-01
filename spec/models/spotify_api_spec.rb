@@ -13,7 +13,7 @@ RSpec.describe SpotifyApi, type: :model do
       stub_request(:get, spotify_api::AUTHORIZE_URL)
         .with(query: { client_id: spotify_api::CLIENT_ID,
                        response_type: 'code',
-                       scope: 'user-read-private',
+                       scope: 'user-read-recently-played',
                        redirect_uri: spotify_api::REDIRECT_URL,
                        state: state })
 
@@ -49,6 +49,21 @@ RSpec.describe SpotifyApi, type: :model do
         .with(headers: { authorization: "Bearer #{Rails.cache.fetch(:access_token)}"})
 
       response = spotify_api.get_userdata(api_url)
+      expect(response).to be_a(Faraday::Response)
+    end
+  end
+
+  describe '.get_refresh_refreshed_token' do
+    it 'returns a response object' do
+      allow(Rails.cache).to receive(:fetch).with(:refresh_token).and_return('token')
+
+      stub_request(:post, spotify_api::TOKEN_URL)
+        .with(body: { grant_type: 'refresh_token', 
+                      refresh_token: Rails.cache.fetch(:refresh_token)
+                    },
+              headers: { authorization: "Basic #{spotify_api.encoded_credentials}"})
+
+      response = spotify_api.request_refreshed_token
       expect(response).to be_a(Faraday::Response)
     end
   end

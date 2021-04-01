@@ -5,4 +5,9 @@
 <br />
 <%= "Access: #{Rails.cache.exist?(:access_token)}" %>
 <br />
-<%= @parsed_data %>
+
+<% if @parsed_data %>
+  <% @parsed_data['items'].each do |track| %>
+    <p><%= p track['track']['name'] %></p>
+  <% end %>
+<% end %>

@@ -1,14 +1,14 @@
 module SpotifyApi
   AUTHORIZE_URL = 'https://accounts.spotify.com/authorize'.freeze
-  TOKEN_URL = 'https://accounts.spotify.com/api/token'.freeze
+  TOKEN_URL     = 'https://accounts.spotify.com/api/token'.freeze
   REDIRECT_URL  = 'http://localhost:3000/callback'.freeze
-  CLIENT_ID = Rails.application.credentials.spotify[:client_id].freeze
+  CLIENT_ID     = Rails.application.credentials.spotify[:client_id].freeze
   CLIENT_SECRET = Rails.application.credentials.spotify[:client_secret].freeze
 
   def self.authorize
     Faraday.get(AUTHORIZE_URL, { client_id:      CLIENT_ID,
                                  response_type:  'code',
-                                 scope:          'user-read-private',
+                                 scope:          'user-read-recently-played',
                                  redirect_uri:   REDIRECT_URL,
                                  state:          state })
   end
@@ -22,7 +22,15 @@ module SpotifyApi
     # use authorization code and swap for access and refresh token
     Faraday.post(TOKEN_URL) do |req|
       req.body = { grant_type: 'authorization_code', code: auth_code, redirect_uri: REDIRECT_URL }
-      req.headers['Authorization'] = " Basic #{encoded_credentials}"
+      req.headers['Authorization'] = "Basic #{encoded_credentials}"
+    end
+  end
+
+  def self.request_refreshed_token
+    # when access code expires use refresh token to get new access token
+    Faraday.post(TOKEN_URL) do |req|
+      req.body = { grant_type: 'refresh_token', refresh_token: Rails.cache.fetch(:refresh_token)}
+      req.headers['Authorization'] = "Basic #{encoded_credentials}"
     end
   end
 
