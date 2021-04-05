@@ -13,7 +13,9 @@ class StaticController < ApplicationController
       Rails.cache.write(:access_token, @access_token, expires_in: @expires)
     end
 
-    @requested_data = SpotifyApi.get_userdata(url)
-    @parsed_data = JSON.parse(@requested_data.env.response.body)
+    if Rails.cache.exist?(:refresh_token)
+      @requested_data = SpotifyApi.get_userdata(url)
+      @parsed_data = JSON.parse(@requested_data.env.response.body)
+    end
   end
 end

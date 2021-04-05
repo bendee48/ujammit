@@ -35,6 +35,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   gem 'webmock', '~> 3.10'
+  gem 'factory_bot_rails', '~> 6.1'
+  gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
 end
 
 group :development do
