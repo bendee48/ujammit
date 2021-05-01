@@ -8,4 +8,5 @@
 
 # Add Users
 User.create!(email: 'emma@email.com', password: 'password')
+User.create!(email: 'ben@email.com', password: 'password')
 puts "#{User.count} user#{'s' if User.count > 1} created."
