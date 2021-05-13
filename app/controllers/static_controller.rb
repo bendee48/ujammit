@@ -3,7 +3,7 @@ class StaticController < ApplicationController
     #use access token to request stuff
     #url = 'https://api.spotify.com/v1/me'
     url = 'https://api.spotify.com/v1/me/player/recently-played'
-
+    
     # Request new access token with refresh if it has expired
     unless Rails.cache.exist?(:access_token)
       @response = SpotifyApi.request_refreshed_token
