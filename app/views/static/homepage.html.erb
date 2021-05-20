@@ -1,9 +1,9 @@
 <h1>Homepage</h1>
 <%= params.inspect %>
 <br />
-<%= "Refresh: #{Rails.cache.exist?(:refresh_token)}" %>
+<%= "Refresh: is nil? #{Rails.cache.fetch(:refresh_token).nil?}" %>
 <br />
-<%= "Access: #{Rails.cache.exist?(:access_token)}" %>
+<%= "Access: is nil? #{Rails.cache.fetch(:access_token).nil?}" %>
 <br />
 
 <% if @parsed_data %>

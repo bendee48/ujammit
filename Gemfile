@@ -38,6 +38,7 @@ group :development, :test do
   gem 'webmock', '~> 3.10'
   gem 'factory_bot_rails', '~> 6.1'
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
+  gem 'capybara', '~> 3.35', '>= 3.35.3'
 end
 
 group :development do
