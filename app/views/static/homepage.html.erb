@@ -6,8 +6,7 @@
 <%= "Access: is nil? #{Rails.cache.fetch(:access_token).nil?}" %>
 <br />
 
-<% if @parsed_data %>
-  <% @parsed_data['items'].each do |track| %>
-    <p><%= p track['track']['name'] %></p>
-  <% end %>
+<% unless Rails.cache.fetch(:access_token) %>
+  <h3>Authorise Spotify to get going.</h3>
+  <%= link_to 'Authorize Spotify', authorize_path, class: 'btn btn-primary', id: 'authorise-btn' %>
 <% end %>

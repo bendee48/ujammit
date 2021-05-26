@@ -21,6 +21,8 @@ class SpotifyController < ApplicationController
     #Rails.cache.write(:access_token, @access_token, expires_in: 15) # testing
     Rails.cache.write(:refresh_token, @refresh_token)
 
+    flash.notice = "Successfully authorised."
+
     redirect_to root_path
   end
 end
