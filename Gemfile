@@ -21,10 +21,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'faraday', '~> 1.1'
@@ -39,6 +37,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.1'
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
   gem 'capybara', '~> 3.35', '>= 3.35.3'
+  gem 'capybara-mechanize', '~> 1.11' # For external requests
 end
 
 group :development do
