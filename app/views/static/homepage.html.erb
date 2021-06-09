@@ -8,7 +8,6 @@
 
 <!--Check refresh token? so only have to check once -->
 <% unless Rails.cache.fetch(:refresh_token) %>
-  <h3>Authorise Spotify to get going.</h3>
-  <%# <%= link_to 'Authorize Spotify', authorize_path, class: 'btn btn-primary', id: 'authorise-btn' %> %>
-  <%= link_to 'Authorize Spotify', 'http://google.com', class: 'btn btn-primary', id: 'authorise-btn' %>
+  <h3>Authorize Spotify to get going.</h3>
+  <%= link_to 'Authorize Spotify', authorize_path, class: 'btn btn-primary', id: 'authorize-btn' %>
 <% end %>
