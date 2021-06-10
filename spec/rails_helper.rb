@@ -8,6 +8,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'webmock/rspec'
 require 'support/factory_bot'
+require 'support/api_request_helper'
 require 'capybara/rspec'
 require 'capybara/mechanize'
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -36,6 +37,9 @@ end
 RSpec.configure do |config|
   # Use warden login helper login_as
   config.include Warden::Test::Helpers
+
+  # Support files
+  config.include ApiRequestHelper
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

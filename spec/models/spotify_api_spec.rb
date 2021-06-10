@@ -9,16 +9,22 @@ RSpec.describe SpotifyApi, type: :model do
       state = 'xyxyx'
       allow(spotify_api).to receive(:state).and_return(state)
       stub_const("#{spotify_api}::CLIENT_ID", '12345')
+
+      authorize(url: spotify_api::AUTHORIZE_URL, 
+                client_id: spotify_api::CLIENT_ID,
+                redirect_url: spotify_api::REDIRECT_URL,
+                state: state)
       
-      stub_request(:get, spotify_api::AUTHORIZE_URL)
-        .with(query: { client_id: spotify_api::CLIENT_ID,
-                       response_type: 'code',
-                       scope: 'user-read-recently-played',
-                       redirect_uri: spotify_api::REDIRECT_URL,
-                       state: state })
+      # stub_request(:get, spotify_api::AUTHORIZE_URL)
+      #   .with(query: { client_id: spotify_api::CLIENT_ID,
+      #                  response_type: 'code',
+      #                  scope: 'user-read-recently-played',
+      #                  redirect_uri: spotify_api::REDIRECT_URL,
+      #                  state: state })
 
       response = spotify_api.authorize
       expect(response).to be_a(Faraday::Response)
+      expect(response.status).to eql 200
     end
   end
 
@@ -37,6 +43,7 @@ RSpec.describe SpotifyApi, type: :model do
 
       response = SpotifyApi.request_token(auth_code)
       expect(response).to be_a(Faraday::Response)
+      expect(response.status).to eql 200
     end    
   end
 

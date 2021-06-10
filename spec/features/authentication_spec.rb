@@ -36,14 +36,13 @@ RSpec.describe 'Authentication', type: :feature do
         # authorize
         allow(SpotifyApi).to receive(:state).and_return('xyxyx')
         stub_const("#{SpotifyApi}::CLIENT_ID", '12345')
-        
-        stub_request(:get, SpotifyApi::AUTHORIZE_URL)
-          .with(query: { client_id: SpotifyApi::CLIENT_ID,
-                        response_type: 'code',
-                        scope: 'user-read-recently-played',
-                        redirect_uri: SpotifyApi::REDIRECT_URL,
-                        state: 'xyxyx' })
-          .to_return(headers: {location: callback_path})
+        state = 'xyxyx'
+
+        authorize(url: SpotifyApi::AUTHORIZE_URL,
+                  client_id: SpotifyApi::CLIENT_ID,
+                  redirect_url: SpotifyApi::REDIRECT_URL,
+                  state: state,
+                  return_info: {headers: {location: callback_path}})
 
         #callback
         credentials = 'xyxyxyx'
