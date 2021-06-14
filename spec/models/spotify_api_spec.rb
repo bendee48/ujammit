@@ -10,17 +10,8 @@ RSpec.describe SpotifyApi, type: :model do
       allow(spotify_api).to receive(:state).and_return(state)
       stub_const("#{spotify_api}::CLIENT_ID", '12345')
 
-      authorize(url: spotify_api::AUTHORIZE_URL, 
-                client_id: spotify_api::CLIENT_ID,
-                redirect_url: spotify_api::REDIRECT_URL,
-                state: state)
-      
-      # stub_request(:get, spotify_api::AUTHORIZE_URL)
-      #   .with(query: { client_id: spotify_api::CLIENT_ID,
-      #                  response_type: 'code',
-      #                  scope: 'user-read-recently-played',
-      #                  redirect_uri: spotify_api::REDIRECT_URL,
-      #                  state: state })
+      authorize(client_id: spotify_api::CLIENT_ID,
+                                 state: state)
 
       response = spotify_api.authorize
       expect(response).to be_a(Faraday::Response)
@@ -34,12 +25,7 @@ RSpec.describe SpotifyApi, type: :model do
       auth_code = '12345'
       allow(spotify_api).to receive(:encoded_credentials).and_return(credentials)
 
-      stub_request(:post, spotify_api::TOKEN_URL)
-        .with(body: { grant_type: 'authorization_code',
-                      code: auth_code,
-                      redirect_uri: spotify_api::REDIRECT_URL,
-                    },
-              headers: { authorization: "Basic #{spotify_api.encoded_credentials}" })
+      request_token(auth_code: auth_code)
 
       response = SpotifyApi.request_token(auth_code)
       expect(response).to be_a(Faraday::Response)

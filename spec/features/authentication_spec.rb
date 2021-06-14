@@ -33,29 +33,22 @@ RSpec.describe 'Authentication', type: :feature do
         login_as(user, scope: :user)
         visit root_path
 
-        # authorize
+        # stub authorize
         allow(SpotifyApi).to receive(:state).and_return('xyxyx')
         stub_const("#{SpotifyApi}::CLIENT_ID", '12345')
         state = 'xyxyx'
 
-        authorize(url: SpotifyApi::AUTHORIZE_URL,
-                  client_id: SpotifyApi::CLIENT_ID,
-                  redirect_url: SpotifyApi::REDIRECT_URL,
+        authorize(client_id: SpotifyApi::CLIENT_ID,
                   state: state,
                   return_info: {headers: {location: callback_path}})
 
-        #callback
+        # stub callback
         credentials = 'xyxyxyx'
         auth_code = nil
         allow(SpotifyApi).to receive(:encoded_credentials).and_return(credentials)
 
-        stub_request(:post, SpotifyApi::TOKEN_URL)
-          .with(body: { grant_type: 'authorization_code',
-                      code: auth_code,
-                      redirect_uri: SpotifyApi::REDIRECT_URL,
-                      },
-                headers: { authorization: "Basic #{SpotifyApi.encoded_credentials}" })
-          .to_return(body: {access_token: '1234', refresh_token: '5678', expires_in: 15}.to_json )
+        request_token(auth_code: auth_code,
+                      return_info: {body: {access_token: '1234', refresh_token: '5678', expires_in: 15}.to_json})
           
         click_on('Authorize Spotify')
 
