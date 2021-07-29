@@ -1,2 +1,9 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+
+<%= "Access Exists #{Rails.cache.exist?(:access_token)}" %>
+
+<% @track_items.each do |track_item| %>
+  <span>Artist: <%= track_item['track']['artists'][0]['name'] %></span><br>
+  <span>Track: <%= track_item['track']['name'] %></span><br/><br/>
+<% end %>

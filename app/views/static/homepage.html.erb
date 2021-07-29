@@ -2,8 +2,10 @@
 <%= params.inspect %>
 <br />
 <%= "Refresh: is nil? #{Rails.cache.fetch(:refresh_token).nil?}" %>
+<%= "Refresh exist? #{Rails.cache.exist?(:refresh_token)}" %>
 <br />
 <%= "Access: is nil? #{Rails.cache.fetch(:access_token).nil?}" %>
+<%= "Access exist? #{Rails.cache.exist?(:access_token)}" %>
 <br />
 
 <!--Check refresh token? so only have to check once -->

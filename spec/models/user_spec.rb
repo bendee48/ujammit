@@ -13,9 +13,6 @@ RSpec.describe User, type: :model do
         user.email = nil
         expect(user).to be_invalid
       end
-
-      it 'is invalid without a password' do
-      end
     end
   end
 end
