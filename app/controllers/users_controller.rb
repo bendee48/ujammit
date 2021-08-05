@@ -1,18 +1,19 @@
 class UsersController < ApplicationController
   def show
-    # If refesh exists but access doesn't
-    if Rails.cache.exist?(:refresh_token) &&
-       Rails.cache.fetch(:access_token).nil?
-        @response = SpotifyApi.request_refreshed_token
-        @access_token = JSON.parse(@response.body)['access_token']
-        @expires = JSON.parse(@response.body)['expires_in']
-        
-        save_access_token
+    # Save new access token if refresh exists but access doesn't
+    if Rails.cache.exist?(:refresh_token) && Rails.cache.fetch(:access_token).nil?
+      @refresh_response = SpotifyApi.request_refreshed_token
+      @access_token = JSON.parse(@refresh_response.body)['access_token']
+      @expires = JSON.parse(@refresh_response.body)['expires_in']
+      
+      save_access_token
     end
-
-    url = "https://api.spotify.com/v1/me/player/recently-played"
-    @response = SpotifyApi.get_userdata(url)
-    @track_items = JSON.parse(@response.body)['items']
+    
+    if Rails.cache.exist?(:access_token)
+      url = "https://api.spotify.com/v1/me/player/recently-played"
+      @response = SpotifyApi.get_userdata(url)
+      @track_items = JSON.parse(@response.body)['items']
+    end
   end
 
   private

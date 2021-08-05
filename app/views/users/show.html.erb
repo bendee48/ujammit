@@ -3,7 +3,11 @@
 
 <%= "Access Exists #{Rails.cache.exist?(:access_token)}" %>
 
-<% @track_items.each do |track_item| %>
-  <span>Artist: <%= track_item['track']['artists'][0]['name'] %></span><br>
-  <span>Track: <%= track_item['track']['name'] %></span><br/><br/>
+<% if @track_items %>
+  <% @track_items.each do |track_item| %>
+    <span>Artist: <%= track_item['track']['artists'][0]['name'] %></span><br>
+    <span>Track: <%= track_item['track']['name'] %></span><br/><br/>
+  <% end %>
+<% else%>
+  <h3>You need to authorize Spotify first to see your tracks</h3>
 <% end %>
