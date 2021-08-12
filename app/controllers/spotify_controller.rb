@@ -27,8 +27,8 @@ class SpotifyController < ApplicationController
   private
 
   def save_tokens
-    # Rails.cache.write(:access_token, @access_token, expires_in: @expires)
-    Rails.cache.write(:access_token, @access_token, expires_in: 15) # testing
+    @expires = 15 if Rails.env.development? || Rails.env.test? 
+    Rails.cache.write(:access_token, @access_token, expires_in: @expires)
     Rails.cache.write(:refresh_token, @refresh_token)
   end
 end
