@@ -34,13 +34,12 @@ RSpec.describe 'Authentication', type: :feature do
         visit root_path
 
         # stub authorize
-        allow(SpotifyApi).to receive(:state).and_return('xyxyx')
+        allow(SpotifyApi).to receive(:state_code).and_return('xyxyx')
         stub_const("#{SpotifyApi}::CLIENT_ID", '12345')
         state = 'xyxyx'
-
         authorize(client_id: SpotifyApi::CLIENT_ID,
                   state: state,
-                  return_info: {headers: {location: callback_path}})
+                  return_info: {headers: {location: callback_path}, body: [1,2,3]})
 
         # stub callback
         credentials = 'xyxyxyx'
@@ -51,7 +50,7 @@ RSpec.describe 'Authentication', type: :feature do
                       return_info: {body: {access_token: '1234', refresh_token: '5678', expires_in: 15}.to_json})
           
         click_on('Authorize Spotify')
-
+        
         expect(page).to have_current_path(root_path)
         expect(page).to_not have_selector('#authorize-btn')
         expect(Rails.cache.fetch(:refresh_token)).to eql '5678'

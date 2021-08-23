@@ -9,7 +9,7 @@ module SpotifyApi
   CLIENT_ID     = Rails.application.credentials.spotify[:client_id].freeze
   CLIENT_SECRET = Rails.application.credentials.spotify[:client_secret].freeze
 
-  def self.authorize
+  def self.authorize(state)
     Faraday.get(AUTHORIZE_URL, { client_id:      CLIENT_ID,
                                  response_type:  'code',
                                  scope:          'user-read-recently-played',
@@ -17,7 +17,7 @@ module SpotifyApi
                                  state:          state })
   end
 
-  def self.state
+  def self.state_code
     # code to protect against csrf
     SecureRandom.base64(12)
   end

@@ -7,13 +7,13 @@ RSpec.describe SpotifyApi, type: :model do
   describe '.authorize' do
     it 'returns a response object' do
       state = 'xyxyx'
-      allow(spotify_api).to receive(:state).and_return(state)
+      # allow(spotify_api).to receive(:state).and_return(state)
       stub_const("#{spotify_api}::CLIENT_ID", '12345')
 
       authorize(client_id: spotify_api::CLIENT_ID,
-                                 state: state)
+                state: state)
 
-      response = spotify_api.authorize
+      response = spotify_api.authorize(state)
       expect(response).to be_a(Faraday::Response)
       expect(response.status).to eql 200
     end

@@ -1,6 +1,8 @@
 class SpotifyController < ApplicationController
   def authorize
-    @response = SpotifyApi.authorize
+    state = SpotifyApi.state_code
+    session[:state_code] = state
+    @response = SpotifyApi.authorize(state)
 
     # Redirect to #callback
     redirect_to @response.env.response_headers[:location]
@@ -9,17 +11,20 @@ class SpotifyController < ApplicationController
   def callback
     # take authorization code from intial authorization request from #authorize
     auth_code = params[:code]
-    # for csrf protection
-    state = params[:state]
+    returned_state = params[:state]
+    
+    # if returned_state == session[:state_code]
+      @response = SpotifyApi.request_token(auth_code)
+      @access_token = JSON.parse(@response.body)['access_token']
+      @refresh_token = JSON.parse(@response.body)['refresh_token']
+      @expires = JSON.parse(@response.body)['expires_in']
 
-    @response = SpotifyApi.request_token(auth_code)
-    @access_token = JSON.parse(@response.body)['access_token']
-    @refresh_token = JSON.parse(@response.body)['refresh_token']
-    @expires = JSON.parse(@response.body)['expires_in']
+      save_tokens
 
-    save_tokens
-
-    flash.notice = "Successfully authorised."
+      flash.notice = "Successfully authorised."
+    # else
+    #   flash.alert = "Suspicious activity detected. Authorisation terminated."
+    # end
 
     redirect_to root_path
   end

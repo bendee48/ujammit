@@ -38,6 +38,7 @@ group :development, :test do
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
   gem 'capybara', '~> 3.35', '>= 3.35.3'
   gem 'capybara-mechanize', '~> 1.11' # For external requests
+  gem 'rack_session_access' #For setting session variables in tests
 end
 
 group :development do
