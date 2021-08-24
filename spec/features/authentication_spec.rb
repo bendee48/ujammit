@@ -40,7 +40,7 @@ RSpec.describe 'Authentication', type: :feature do
         authorize(client_id: SpotifyApi::CLIENT_ID,
                   state: state,
                   return_info: {headers: {location: callback_path}, body: [1,2,3]})
-
+          
         # stub callback
         credentials = 'xyxyxyx'
         auth_code = nil
@@ -48,7 +48,7 @@ RSpec.describe 'Authentication', type: :feature do
 
         request_token(auth_code: auth_code,
                       return_info: {body: {access_token: '1234', refresh_token: '5678', expires_in: 15}.to_json})
-          
+        
         click_on('Authorize Spotify')
         
         expect(page).to have_current_path(root_path)
