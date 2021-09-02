@@ -1,15 +1,20 @@
-<h1>Homepage</h1>
-<%= params.inspect %>
-<br />
-<%= "Refresh: is nil? #{Rails.cache.fetch(:refresh_token).nil?}" %>
-<%= "Refresh exist? #{Rails.cache.exist?(:refresh_token)}" %>
-<br />
-<%= "Access: is nil? #{Rails.cache.fetch(:access_token).nil?}" %>
-<%= "Access exist? #{Rails.cache.exist?(:access_token)}" %>
-<br />
+<%# Testing %>
+<p style="font-size:10px;">
+  <%= "Refresh: is nil? #{Rails.cache.fetch(:refresh_token).nil?}" %>
+  <%= "Refresh exist? #{Rails.cache.exist?(:refresh_token)}" %>
+  <br />
+  <%= "Access: is nil? #{Rails.cache.fetch(:access_token).nil?}" %>
+  <%= "Access exist? #{Rails.cache.exist?(:access_token)}" %>
+</p>
 
-<!--Check refresh token? so only have to check once -->
-<% unless Rails.cache.fetch(:refresh_token) %>
-  <h3>Authorize Spotify to get going.</h3>
-  <%= link_to 'Authorize Spotify', authorize_path, class: 'btn btn-primary', id: 'authorize-btn' %>
-<% end %>
+<!--Check refresh token. Refresh indicates app has been authorised. -->
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8 text-center">
+    <% unless Rails.cache.fetch(:refresh_token) %>
+      <h3>Authorize Spotify to get going.</h3>
+      <%= link_to 'Authorize Spotify', authorize_path, class: 'btn btn-lg btn-primary', id: 'authorize-btn' %>
+    <% end %>
+  </div>
+  <div class="col-md-2"></div>
+</div>
