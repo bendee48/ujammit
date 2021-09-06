@@ -16,10 +16,10 @@
           <div class="card-footer">
             <%= link_to 'Go to Album', track_item['track']['external_urls']['spotify'], class: 'btn btn-sm btn-outline-success', target: '_blank' %>
             <%= link_to 'Preview Track', track_item['track']['preview_url'], class: 'btn btn-sm btn-outline-success', target: '_blank' %>
+            <% url = track_item['track']['external_urls']['spotify'].split('/').last %>
+            <iframe src="https://open.spotify.com/embed/track/<%= url %>" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </div>
         </div>
-        <!--<span>Artist: <%= track_item['track']['artists'][0]['name'] %></span><br>
-        <span>Track: <%= track_item['track']['name'] %></span><br/><br/>-->
       <% end %>
     <% else%>
       <h3>You need to authorize Spotify first to see your tracks</h3>
