@@ -10,13 +10,13 @@
       <% @track_items.each do |track_item| %>
         <div class="card border-success text-center mb-3">
           <div class="card-body text-success">
-            <h5 class="card-title"><%= track_item['track']['name'] %></h5>
-            <p class="card-text"><%= track_item['track']['artists'][0]['name'] %></p>
+            <h5 class="card-title"><%= track_item.name %></h5>
+            <p class="card-text"><%= track_item.artist %></p>
           </div>
           <div class="card-footer">
-            <%= link_to 'Go to Album', track_item['track']['external_urls']['spotify'], class: 'btn btn-sm btn-outline-success', target: '_blank' %>
-            <%= link_to 'Preview Track', track_item['track']['preview_url'], class: 'btn btn-sm btn-outline-success', target: '_blank' %>
-            <% url = track_item['track']['external_urls']['spotify'].split('/').last %>
+            <%= link_to 'Go to Album', track_item.album_link, class: 'btn btn-sm btn-outline-success', target: '_blank' %>
+            <%= link_to 'Preview Track', track_item.preview_link, class: 'btn btn-sm btn-outline-success', target: '_blank' %>
+            <% url = track_item.album_link.split('/').last %>
             <iframe src="https://open.spotify.com/embed/track/<%= url %>" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </div>
         </div>

@@ -1,1 +1,97 @@
-{"track"=>{"album"=>{"album_type"=>"single", "artists"=>[{"external_urls"=>{"spotify"=>"https://open.spotify.com/artist/100sLnojEpcadRx4edEBA6"}, "href"=>"https://api.spotify.com/v1/artists/100sLnojEpcadRx4edEBA6", "id"=>"100sLnojEpcadRx4edEBA6", "name"=>"Zella Day", "type"=>"artist", "uri"=>"spotify:artist:100sLnojEpcadRx4edEBA6"}, {"external_urls"=>{"spotify"=>"https://open.spotify.com/artist/3Uqu1mEdkUJxPe7s31n1M9"}, "href"=>"https://api.spotify.com/v1/artists/3Uqu1mEdkUJxPe7s31n1M9", "id"=>"3Uqu1mEdkUJxPe7s31n1M9", "name"=>"Weyes Blood", "type"=>"artist", "uri"=>"spotify:artist:3Uqu1mEdkUJxPe7s31n1M9"}], "available_markets"=>["AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW"], "external_urls"=>{"spotify"=>"https://open.spotify.com/album/4sZmMxrfujVWfFtYk6tfXH"}, "href"=>"https://api.spotify.com/v1/albums/4sZmMxrfujVWfFtYk6tfXH", "id"=>"4sZmMxrfujVWfFtYk6tfXH", "images"=>[{"height"=>640, "url"=>"https://i.scdn.co/image/ab67616d0000b273e7fa902ce3278f262425c315", "width"=>640}, {"height"=>300, "url"=>"https://i.scdn.co/image/ab67616d00001e02e7fa902ce3278f262425c315", "width"=>300}, {"height"=>64, "url"=>"https://i.scdn.co/image/ab67616d00004851e7fa902ce3278f262425c315", "width"=>64}], "name"=>"Holocene [feat. Weyes Blood]", "release_date"=>"2021-02-05", "release_date_precision"=>"day", "total_tracks"=>1, "type"=>"album", "uri"=>"spotify:album:4sZmMxrfujVWfFtYk6tfXH"}, "artists"=>[{"external_urls"=>{"spotify"=>"https://open.spotify.com/artist/100sLnojEpcadRx4edEBA6"}, "href"=>"https://api.spotify.com/v1/artists/100sLnojEpcadRx4edEBA6", "id"=>"100sLnojEpcadRx4edEBA6", "name"=>"Zella Day", "type"=>"artist", "uri"=>"spotify:artist:100sLnojEpcadRx4edEBA6"}, {"external_urls"=>{"spotify"=>"https://open.spotify.com/artist/3Uqu1mEdkUJxPe7s31n1M9"}, "href"=>"https://api.spotify.com/v1/artists/3Uqu1mEdkUJxPe7s31n1M9", "id"=>"3Uqu1mEdkUJxPe7s31n1M9", "name"=>"Weyes Blood", "type"=>"artist", "uri"=>"spotify:artist:3Uqu1mEdkUJxPe7s31n1M9"}], "available_markets"=>["AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW"], "disc_number"=>1, "duration_ms"=>266292, "explicit"=>false, "external_ids"=>{"isrc"=>"USC4R2007985"}, "external_urls"=>{"spotify"=>"https://open.spotify.com/track/0zbc8UgOfYyG96pAWjx3hH"}, "href"=>"https://api.spotify.com/v1/tracks/0zbc8UgOfYyG96pAWjx3hH", "id"=>"0zbc8UgOfYyG96pAWjx3hH", "is_local"=>false, "name"=>"Holocene [feat. Weyes Blood]", "popularity"=>43, "preview_url"=>"https://p.scdn.co/mp3-preview/937eb18e7922310a0f1259ac3077c1b78b852850?cid=66c1f51cf0014bc6a7557ef82c5c437c", "track_number"=>1, "type"=>"track", "uri"=>"spotify:track:0zbc8UgOfYyG96pAWjx3hH"}, "played_at"=>"2021-09-07T16:30:44.039Z", "context"=>{"external_urls"=>{"spotify"=>"https://open.spotify.com/playlist/37i9dQZEVXcLSvHOEw8K9F"}, "href"=>"https://api.spotify.com/v1/playlists/37i9dQZEVXcLSvHOEw8K9F", "type"=>"playlist", "uri"=>"spotify:playlist:37i9dQZEVXcLSvHOEw8K9F"}}
+{
+    "items": [
+        {
+            "track": {
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
+                        "id": "5INjqkS1o8h1imAzPqGZBb",
+                        "name": "Tame Impala",
+                        "type": "artist",
+                        "uri": "spotify:artist:5INjqkS1o8h1imAzPqGZBb"
+                    }
+                ],
+                "available_markets": [
+                    "CA",
+                    "MX",
+                    "US"
+                ],
+                "disc_number": 1,
+                "duration_ms": 108546,
+                "explicit": false,
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/track/2gNfxysfBRfl9Lvi9T3v6R"
+                },
+                "href": "https://api.spotify.com/v1/tracks/2gNfxysfBRfl9Lvi9T3v6R",
+                "id": "2gNfxysfBRfl9Lvi9T3v6R",
+                "name": "Disciples",
+                "preview_url": "https://p.scdn.co/mp3-preview/6023e5aac2123d098ce490488966b28838b14fa2",
+                "track_number": 9,
+                "type": "track",
+                "uri": "spotify:track:2gNfxysfBRfl9Lvi9T3v6R"
+            },
+            "played_at": "2016-12-13T20:44:04.589Z",
+            "context": {
+                "uri": "spotify:artist:5INjqkS1o8h1imAzPqGZBb",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb"
+                },
+                "href": "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
+                "type": "artist"
+            }
+        },
+        {
+            "track": {
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
+                        "id": "5INjqkS1o8h1imAzPqGZBb",
+                        "name": "Tame Impala",
+                        "type": "artist",
+                        "uri": "spotify:artist:5INjqkS1o8h1imAzPqGZBb"
+                    }
+                ],
+                "available_markets": [
+                    "CA",
+                    "MX",
+                    "US"
+                ],
+                "disc_number": 1,
+                "duration_ms": 467586,
+                "explicit": false,
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/track/2X485T9Z5Ly0xyaghN73ed"
+                },
+                "href": "https://api.spotify.com/v1/tracks/2X485T9Z5Ly0xyaghN73ed",
+                "id": "2X485T9Z5Ly0xyaghN73ed",
+                "name": "Let It Happen",
+                "preview_url": "https://p.scdn.co/mp3-preview/05dee1ad0d2a6fa4ad07fbd24ae49d58468e8194",
+                "track_number": 1,
+                "type": "track",
+                "uri": "spotify:track:2X485T9Z5Ly0xyaghN73ed"
+            },
+            "played_at": "2016-12-13T20:42:17.016Z",
+            "context": {
+                "uri": "spotify:artist:5INjqkS1o8h1imAzPqGZBb",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb"
+                },
+                "href": "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
+                "type": "artist"
+            }
+        }
+    ],
+    "next": "https://api.spotify.com/v1/me/player/recently-played?before=1481661737016&limit=2",
+    "cursors": {
+        "after": "1481661844589",
+        "before": "1481661737016"
+    },
+    "limit": 2,
+    "href": "https://api.spotify.com/v1/me/player/recently-played?limit=2"
+}

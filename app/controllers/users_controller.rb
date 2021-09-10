@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     if Rails.cache.exist?(:access_token)
       url = "https://api.spotify.com/v1/me/player/recently-played"
       @response = SpotifyApi.get_userdata(url)
-      @track_items = JSON.parse(@response.body)['items']
+      # @track_items = JSON.parse(@response.body)['items']
+      @track_items = TrackParser.get_tracks(@response.body)
     end
   end
 
