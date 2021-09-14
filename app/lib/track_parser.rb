@@ -4,8 +4,6 @@ module TrackParser
     tracks
   end
 
-  # make private maybe
-
   def self.parse(api_response)
     @parsed_tracks = JSON.parse(api_response)['items']
   end
@@ -19,4 +17,6 @@ module TrackParser
                           preview_link: track['track']['preview_url'])
               end
   end
+
+  private_class_method :parse, :tracks
 end
