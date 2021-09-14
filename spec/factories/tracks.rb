@@ -7,8 +7,13 @@ FactoryBot.define do
     artist { 'artist 1' }
     album_link { 'album_link' }
     preview_link { 'preview_link' }
+    played_at { '5 minutes ago' }
 
     # For regular ruby classes redefine initialize
-    initialize_with { new({name: name, artist: artist, album_link: album_link, preview_link: preview_link})}
+    initialize_with { new({name: name, 
+                           artist: artist, 
+                           album_link: album_link, 
+                           preview_link: preview_link,
+                           played_at: played_at})}
   end
 end

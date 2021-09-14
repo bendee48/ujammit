@@ -10,11 +10,11 @@ module TrackParser
 
   def self.tracks
     @tracks = @parsed_tracks.map do |track|
-                url = track['track']['external_urls']['spotify']
                 Track.new(name: track['track']['name'], 
                           artist: track['track']['artists'][0]['name'], 
-                          album_link: url, 
-                          preview_link: track['track']['preview_url'])
+                          album_link: track['track']['external_urls']['spotify'], 
+                          preview_link: track['track']['preview_url'],
+                          played_at: track['played_at'])
               end
   end
 
