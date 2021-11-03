@@ -29,6 +29,7 @@ RSpec.describe 'Authentication', type: :feature do
     end
 
     context 'user has authorized Spotify' do
+      # Mechanize allows Capybara to use remote requests
       it 'does not show authorize button', driver: :mechanize do
         login_as(user, scope: :user)
         visit root_path

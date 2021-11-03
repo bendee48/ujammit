@@ -10,13 +10,14 @@
       <% @track_items.each do |track_item| %>
         <div class="card border-success text-center mb-3">
           <div class="card-body text-success d-flex flex-column flex-md-row justify-content-around align-items-center">
-            <div class="track-names flex-grow-1 mr-md-5 border-sm">
+            <!--<div class="track-names flex-grow-1 mr-md-5 border-sm">-->
+            <div class="track-names flex-grow-1 border-sm">
               <h5 class="card-title"><%= track_item.name %></h5>
               <p class="card-text mb-3 mb-md-0"><%= track_item.artist %></p>
             </div>
             <div>
-              <% url = track_item.album_link.split('/').last %>
-              <iframe src="https://open.spotify.com/embed/track/<%= url %>" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              <!--<% url = track_item.album_link.split('/').last %>
+              <iframe src="https://open.spotify.com/embed/track/<%= url %>" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>-->
             </div>
           </div>
           <div class="card-footer">

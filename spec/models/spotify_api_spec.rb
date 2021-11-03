@@ -14,6 +14,7 @@ RSpec.describe SpotifyApi, type: :model do
                 state: state)
 
       response = spotify_api.authorize(state)
+
       expect(response).to be_a(Faraday::Response)
       expect(response.status).to eql 200
     end

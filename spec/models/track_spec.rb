@@ -28,7 +28,7 @@ RSpec.describe Track, type: :model do
   end
 
   describe '#played_at' do
-    it 'returns the time thr track was played' do
+    it 'returns the time the track was played' do
       expect(track.played_at).to eql '5 minutes ago'
     end
   end
