@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.0.4.1'
+gem 'rails', '6.1.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -36,7 +36,7 @@ group :development, :test do
   gem 'webmock', '~> 3.10'
   gem 'factory_bot_rails', '~> 6.1'
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
-  gem 'capybara', '~> 2.7', '>= 2.7.1'
+  gem 'capybara', '~> 2.7'
   gem 'capybara-mechanize', '~> 1.11' # For external requests
   gem 'rack_session_access' #For setting session variables in tests
 end
