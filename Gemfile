@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.1.0'
+gem 'rails', '~> 7.0.0.alpha2'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -26,7 +26,8 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'faraday', '~> 1.1'
-gem 'devise', '~> 4.7', '>= 4.7.3'
+# This version sidesteps calling ActiveSupport::Dependicies (gone from Rails 7)
+gem 'devise', git: 'https://github.com/heartcombo/devise', branch: 'main'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

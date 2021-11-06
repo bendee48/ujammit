@@ -5,7 +5,7 @@ class SpotifyController < ApplicationController
     @response = SpotifyApi.authorize(state)
 
     # Redirect to #callback
-    redirect_to @response.env.response_headers[:location]
+    redirect_to @response.env.response_headers[:location], allow_other_host: true
   end
 
   def callback
