@@ -1,26 +1,31 @@
 class UsersController < ApplicationController
   def show
-    # Save new access token if refresh exists but access doesn't
-    if Rails.cache.exist?(:refresh_token) && Rails.cache.fetch(:access_token).nil?
-      @refresh_response = SpotifyApi.request_refreshed_token
-      @access_token = JSON.parse(@refresh_response.body)['access_token']
-      @expires = JSON.parse(@refresh_response.body)['expires_in']
-      
-      save_access_token
-    end
-    
-    if Rails.cache.exist?(:access_token)
-      url = "https://api.spotify.com/v1/me/player/recently-played"
-      @response = SpotifyApi.get_userdata(url)
-      # @track_items = JSON.parse(@response.body)['items']
-      @track_items = TrackParser.get_tracks(@response.body)
+    # Check refresh exists to confirm initial authorisation
+    if current_user.refresh_token.present?
+      if DateTime.current < current_user.access_token_expiration
+        url = "https://api.spotify.com/v1/me/player/recently-played"
+        @response = SpotifyApi.get_userdata(url, current_user)
+        @track_items = TrackParser.get_tracks(@response.body)
+      else
+        @refresh_response = SpotifyApi.request_refreshed_token(current_user)
+        @access_token = JSON.parse(@refresh_response.body)['access_token']
+        @expires = JSON.parse(@refresh_response.body)['expires_in']
+        
+        save_access_token
+
+        url = "https://api.spotify.com/v1/me/player/recently-played"
+        @response = SpotifyApi.get_userdata(url, current_user)
+        @track_items = TrackParser.get_tracks(@response.body)
+      end
     end
   end
 
   private
 
   def save_access_token
-    # Rails.cache.write(:access_token, @access_token, expires_in: @expires) 
-    Rails.cache.write(:access_token, @access_token, expires_in: 15) #testing
+    @expires = 90 if Rails.env.development? || Rails.env.test? #testing
+    @date = DateTime.current + @expires.seconds
+    current_user.update(access_token: @access_token,
+                        access_token_expiration: @date)
   end
 end

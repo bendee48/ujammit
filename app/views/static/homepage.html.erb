@@ -1,17 +1,18 @@
 <%# Testing %>
 <p style="font-size:10px;">
-  <%= "Refresh: is nil? #{Rails.cache.fetch(:refresh_token).nil?}" %>
-  <%= "Refresh exist? #{Rails.cache.exist?(:refresh_token)}" %>
+  <%= "Refresh: is nil? #{current_user.refresh_token.nil?}" %>
+  <%= "Refresh exist? #{!!current_user.refresh_token}" %>
   <br />
-  <%= "Access: is nil? #{Rails.cache.fetch(:access_token).nil?}" %>
-  <%= "Access exist? #{Rails.cache.exist?(:access_token)}" %>
+  <%= "Access: is nil? #{current_user.access_token.nil?}" %>
+  <%= "Access exist? #{!!current_user.access_token}" %>
+  <%= "Access is valid? #{current_user.access_token_expiration > DateTime.current if current_user.access_token_expiration.present?}" %>
 </p>
 
 <!--Check refresh token. Refresh indicates app has been authorised. -->
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8 text-center">
-    <% unless Rails.cache.fetch(:refresh_token) %>
+    <% unless current_user.refresh_token %>
       <h3>Authorize Spotify to get going.</h3>
       <%= link_to 'Authorize Spotify', authorize_path, class: 'btn btn-lg btn-primary', id: 'authorize-btn' %>
     <% end %>

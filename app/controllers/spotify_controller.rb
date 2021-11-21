@@ -19,7 +19,7 @@ class SpotifyController < ApplicationController
       @access_token = JSON.parse(@response.body)['access_token']
       @refresh_token = JSON.parse(@response.body)['refresh_token']
       @expires = JSON.parse(@response.body)['expires_in']
-
+      
       save_tokens
 
       flash.notice = "Successfully authorised."
@@ -33,8 +33,10 @@ class SpotifyController < ApplicationController
   private
 
   def save_tokens
-    @expires = 15 if Rails.env.development? || Rails.env.test? 
-    Rails.cache.write(:access_token, @access_token, expires_in: @expires)
-    Rails.cache.write(:refresh_token, @refresh_token)
+    @expires = 90 if Rails.env.development? || Rails.env.test?
+    @date = DateTime.current + @expires.seconds
+    current_user.update(access_token: @access_token,
+                        refresh_token: @refresh_token,
+                        access_token_expiration: @date)
   end
 end

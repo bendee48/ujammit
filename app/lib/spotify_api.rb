@@ -30,10 +30,10 @@ module SpotifyApi
     end
   end
 
-  def self.request_refreshed_token
+  def self.request_refreshed_token(user)
     # when access code expires use refresh token to get new access token
     Faraday.post(TOKEN_URL) do |req|
-      req.body = { grant_type: 'refresh_token', refresh_token: Rails.cache.fetch(:refresh_token)}
+      req.body = { grant_type: 'refresh_token', refresh_token: user.refresh_token }
       req.headers['Authorization'] = "Basic #{encoded_credentials}"
     end
   end
@@ -42,9 +42,9 @@ module SpotifyApi
     Base64.strict_encode64("#{CLIENT_ID}:#{CLIENT_SECRET}")
   end
 
-  def self.get_userdata(api_url)
+  def self.get_userdata(api_url, user)
     Faraday.get(api_url) do |req|
-      req.headers['Authorization'] = "Bearer #{Rails.cache.fetch(:access_token)}"
+      req.headers['Authorization'] = "Bearer #{user.access_token}"
     end
   end
 end

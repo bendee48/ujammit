@@ -1,6 +1,6 @@
 <%# testing %>
 <small style="font-size:10px;">
-  <%= "Access Exists: #{Rails.cache.exist?(:access_token)}" %>
+  <%= "Access Valid: #{current_user.access_token_expiration > DateTime.current}" %>
 </small>
 
 <div class="row">
