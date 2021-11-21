@@ -3,13 +3,14 @@ require 'rails_helper'
 RSpec.describe SpotifyApi, type: :model do
   # Testing only that response objects are returned
   subject(:spotify_api) { described_class }
+  let(:user) { build(:user) }
   
   describe '.authorize' do
     it 'returns a response object' do
       state = 'xyxyx'
-      # allow(spotify_api).to receive(:state).and_return(state)
+      
       stub_const("#{spotify_api}::CLIENT_ID", '12345')
-
+      
       authorize(client_id: spotify_api::CLIENT_ID,
                 state: state)
 
@@ -37,27 +38,24 @@ RSpec.describe SpotifyApi, type: :model do
   describe '.get_userdata' do
     it 'returns a response object' do
       api_url = 'https://api.spotify.com/v1/me'
-      allow(Rails.cache).to receive(:fetch).with(:access_token).and_return('hah')
       
       stub_request(:get, api_url)
-        .with(headers: { authorization: "Bearer #{Rails.cache.fetch(:access_token)}"})
+        .with(headers: { authorization: "Bearer #{user.access_token}"})
 
-      response = spotify_api.get_userdata(api_url)
+      response = spotify_api.get_userdata(api_url, user)
       expect(response).to be_a(Faraday::Response)
     end
   end
 
   describe '.get_refresh_refreshed_token' do
     it 'returns a response object' do
-      allow(Rails.cache).to receive(:fetch).with(:refresh_token).and_return('token')
-
       stub_request(:post, spotify_api::TOKEN_URL)
         .with(body: { grant_type: 'refresh_token', 
-                      refresh_token: Rails.cache.fetch(:refresh_token)
+                      refresh_token: user.refresh_token
                     },
               headers: { authorization: "Basic #{spotify_api.encoded_credentials}"})
 
-      response = spotify_api.request_refreshed_token
+      response = spotify_api.request_refreshed_token(user)
       expect(response).to be_a(Faraday::Response)
     end
   end
