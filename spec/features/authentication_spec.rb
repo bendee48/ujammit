@@ -5,13 +5,13 @@ RSpec.describe 'Authentication', type: :feature do
 
   describe 'authorizing Spotify' do
     context 'user has not authorized Spotify' do
-      xit 'does something' do
+      it 'returns no access token for current user' do
         login_as(user, scope: :user)
 
         visit root_path
-        
+
         expect(page).to have_current_path(root_path)
-        # expect(Rails.cache.exist?(:access_token)).to eql false
+        expect(user.access_token).to eql nil
       end
 
       it 'shows button for authorization' do
@@ -26,7 +26,7 @@ RSpec.describe 'Authentication', type: :feature do
 
     context 'user has authorized Spotify' do
       # Mechanize allows Capybara to use remote requests
-      it 'does not show authorize button', driver: :mechanize do
+      it 'does not show authorize button and saves refresh token', driver: :mechanize do
         login_as(user, scope: :user)
         visit root_path
 
