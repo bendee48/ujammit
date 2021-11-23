@@ -5,4 +5,8 @@ class User < ApplicationRecord
             :recoverable, :rememberable, :validatable
   validates :email, presence: true
   encrypts  :access_token, :refresh_token
+
+  def access_valid?
+    access_token_expiration > DateTime.now
+  end
 end

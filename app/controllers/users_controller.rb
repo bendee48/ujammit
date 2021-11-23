@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
     # Check refresh exists to confirm initial authorisation
     if current_user.refresh_token.present?
-      if DateTime.current < current_user.access_token_expiration
+      if current_user.access_valid?
         url = "https://api.spotify.com/v1/me/player/recently-played"
         @response = SpotifyApi.get_userdata(url, current_user)
         @track_items = TrackParser.get_tracks(@response.body)

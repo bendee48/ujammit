@@ -15,4 +15,19 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#access_valid?' do
+    context 'access token has not expired and is valid ' do
+      it 'returns true' do
+        expect(user.access_valid?).to eql true
+      end
+    end
+
+    context 'access token has expired and is invalid' do
+      it 'returns false' do
+        user.access_token_expiration = DateTime.now - 60.seconds
+        expect(user.access_valid?).to eql false
+      end
+    end
+  end
 end
