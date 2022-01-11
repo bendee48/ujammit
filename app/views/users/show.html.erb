@@ -1,6 +1,6 @@
 <%# testing %>
 <small style="font-size:10px;">
-  <%= "Access Valid: #{current_user.access_token_expiration > DateTime.current}" %>
+  <%= "Access Valid: #{current_user.access_valid?}" %>
 </small>
 
 <div class="row">
